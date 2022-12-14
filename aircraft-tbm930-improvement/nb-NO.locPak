@@ -13,6 +13,8 @@
       "COCKPIT.TOOLTIPS.APTRIM_TURN_ON": "Slå ON AP og trims",
       "COCKPIT.TOOLTIPS.CIRCUIT_BREAKER_LIGHT_SWITCH_OFF": "Slå ON strømbryterlampen",
       "COCKPIT.TOOLTIPS.CIRCUIT_BREAKER_LIGHT_SWITCH_ON": "Slå OFF strømbryterlampen",
+      "COCKPIT.TOOLTIPS.COCKPIT_DOOR_HANDLE_ACTION.0": "Beveg til venstre for å åpne. Beveg til høyre for å låse.",
+      "COCKPIT.TOOLTIPS.COCKPIT_DOOR_HANDLE_ACTION.1": "Beveg til høyre for å lukke døren.",
       "COCKPIT.TOOLTIPS.CRASHBAR_MOVE_DOWN": "Flytt ned krasjstangen",
       "COCKPIT.TOOLTIPS.CRASHBAR_MOVE_UP": "Flytt opp krasjstangen",
       "COCKPIT.TOOLTIPS.DIMMING_TURN_OFF": "Slå OFF dimming",

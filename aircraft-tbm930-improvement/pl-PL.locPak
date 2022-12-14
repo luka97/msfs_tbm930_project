@@ -13,6 +13,8 @@
       "COCKPIT.TOOLTIPS.APTRIM_TURN_ON": "Włącz autopilota i trymery",
       "COCKPIT.TOOLTIPS.CIRCUIT_BREAKER_LIGHT_SWITCH_OFF": "Włącz bezpiecznik świateł",
       "COCKPIT.TOOLTIPS.CIRCUIT_BREAKER_LIGHT_SWITCH_ON": "Wyłącz bezpiecznik świateł",
+      "COCKPIT.TOOLTIPS.COCKPIT_DOOR_HANDLE_ACTION.0": "Przesuń w lewo, aby otworzyć. Przesuń w prawo, aby zablokować.",
+      "COCKPIT.TOOLTIPS.COCKPIT_DOOR_HANDLE_ACTION.1": "Przesuń w prawo, aby zamknąć drzwi.",
       "COCKPIT.TOOLTIPS.CRASHBAR_MOVE_DOWN": "Przesuń dźwignię awaryjną w dół",
       "COCKPIT.TOOLTIPS.CRASHBAR_MOVE_UP": "Przesuń dźwignię awaryjną w górę",
       "COCKPIT.TOOLTIPS.DIMMING_TURN_OFF": "Wyłącz przyciemnienie",

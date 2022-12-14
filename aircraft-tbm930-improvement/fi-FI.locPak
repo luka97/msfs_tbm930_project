@@ -13,6 +13,8 @@
       "COCKPIT.TOOLTIPS.APTRIM_TURN_ON": "Kytke AP ja trimmit päälle",
       "COCKPIT.TOOLTIPS.CIRCUIT_BREAKER_LIGHT_SWITCH_OFF": "Kytke virrankatkaisinvalo päälle",
       "COCKPIT.TOOLTIPS.CIRCUIT_BREAKER_LIGHT_SWITCH_ON": "Kytke virrankatkaisinvalo pois päältä",
+      "COCKPIT.TOOLTIPS.COCKPIT_DOOR_HANDLE_ACTION.0": "Siirry vasemmalle avataksesi oven lukituksen. Siirry oikealle lukitaksesi sen.",
+      "COCKPIT.TOOLTIPS.COCKPIT_DOOR_HANDLE_ACTION.1": "Siirry oikealle sulkeaksesi oven.",
       "COCKPIT.TOOLTIPS.CRASHBAR_MOVE_DOWN": "Siirrä virrankatkaisupalkki alas",
       "COCKPIT.TOOLTIPS.CRASHBAR_MOVE_UP": "Siirrä virrankatkaisupalkki ylös",
       "COCKPIT.TOOLTIPS.DIMMING_TURN_OFF": "Poista himmennys käytöstä",

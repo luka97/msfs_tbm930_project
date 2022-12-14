@@ -87,6 +87,8 @@ BleedAirSource=0
 
 [LocalVars.0]
 XMLVAR_LANDING_TAXI_OFF_Switch_Position=1
+XMLVAR_Source_Switch_State=1
+XMLVAR_SpeedIsManuallySet=1
 XMLVAR_FuelSelectorAuto=1
 XMLVAR_TBM930_FrontDoor_Unlock=0
 XMLVAR_TBM930_BackDoor_Unlock=0
@@ -111,6 +113,14 @@ WingLights=True
 CabinLights=True
 GlareshieldLights=False
 PedestalLights=False
+
+[Electrical.0]
+alternator.1=True
+alternator.2=False
+circuit.50=False
+circuit.51=False
+bus.1 = bus.11:0
+bus.17 = bus.18:0
 
 [AutoPilot.0]
 MasterSwitch=False

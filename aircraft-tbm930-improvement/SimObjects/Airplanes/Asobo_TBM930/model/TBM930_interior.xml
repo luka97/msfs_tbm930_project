@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ModelInfo>
     <LODS>
         <!-- Highest LOD -->
@@ -16,17 +16,18 @@
         <!-- Includes ###################################### -->
         <Include ModelBehaviorFile="Asobo\Common.xml"/>
         <Include ModelBehaviorFile="Asobo\GlassCockpit\AS3000.xml"/>
-        <Include ModelBehaviorFile="Asobo\GlassCockpit\AS580.xml"/>
-        <Include ModelBehaviorFile="TBM930_Templates.xml"/>
+        <Include ModelBehaviorFile="WT\G3000\G3000.xml"/>
+        <Include ModelBehaviorFile="WT\G3000\GTC.xml"/>
+        <Include RelativeFile="TBM930_SplitScreen_Templates.xml"/>
         <!-- ############################################### -->
 
         <Component ID="MISC">
             <UseInputEvent ID="PROCEDURE">
                 <PROCEDURE_ID>AUTOSTART</PROCEDURE_ID>
                 <ON_AUTOSTART>
-                    (&gt;B:ELECTRICAL_Crash_Lever_Up)
-                    (&gt;B:ELECTRICAL_Battery_1_Battery)
-                    (&gt;B:ELECTRICAL_Alternator_1_Main)
+                    0 (&gt;B:ELECTRICAL_Battery_1_Set)
+                    (&gt;B:ELECTRICAL_Source_Switch_Batt)
+                    (&gt;B:ELECTRICAL_Generator_Switch_Main)
                     (&gt;B:ENGINE_Ignition_1_Auto)
                     (&gt;B:ENGINE_Starter_1_On)
                     (&gt;B:ENGINE_Throttle_Idle)
@@ -34,13 +35,12 @@
                     (&gt;B:FUEL_Selector_1_Left)
                 </ON_AUTOSTART>
                 <ON_AUTOSTOP>
-                    (&gt;B:ELECTRICAL_Battery_1_Off)
-                    (&gt;B:ELECTRICAL_Alternator_1_Off)
                     (&gt;B:ENGINE_Throttle_Cutoff)
                     (&gt;B:ENGINE_Starter_1_Off)
                     (&gt;B:ENGINE_Ignition_1_Off)
                     (&gt;B:FUEL_Pump_1_Off)
                     (&gt;B:FUEL_Selector_1_Off)
+                    1 (&gt;B:ELECTRICAL_Battery_1_Set)
                 </ON_AUTOSTOP>
             </UseInputEvent>
         </Component>
@@ -175,6 +175,8 @@
                 <ANIMTIP_1_ON_PERCENT>0.5</ANIMTIP_1_ON_PERCENT>
                 <ANIMTIP_2>TT:COCKPIT.TOOLTIPS.FLAPS_LEVER_LDG</ANIMTIP_2>
                 <ANIMTIP_2_ON_PERCENT>1</ANIMTIP_2_ON_PERCENT>
+
+
             </UseTemplate>
             <UseTemplate Name="ASOBO_HANDLING_Wheel_ElevatorTrim_Template">
                 <ANIM_NAME>lever_trim_elevator</ANIM_NAME>
@@ -193,7 +195,6 @@
             </UseTemplate>
             <CameraTitle>Pedestal</CameraTitle>
         </Component>
-
         <Component ID="HANDLING_Overhead">
             <Component ID="HANDLING_Switch_AutopilotTrim" Node="aptrims_switch">
                 <Parameters Type="Override">
@@ -303,11 +304,11 @@
                     <UPDATE_CODE>(L:XMLVAR_LandingGearLightBlink) ! (&gt;L:XMLVAR_LandingGearLightBlink)</UPDATE_CODE>
                 </UseTemplate>
                 <UseTemplate Name="ASOBO_GT_Update">
-                    <FREQUENCY>1</FREQUENCY> <!-- 1 Hz -->
+                    <FREQUENCY>1</FREQUENCY>          <!-- 1 Hz -->
                     <UPDATE_CODE>(B:LANDING_GEAR_Light_Test, Bool) if{ (L:XMLVAR_LandingGearLightTesting) ! (&gt;L:XMLVAR_LandingGearLightTesting) }</UPDATE_CODE>
                 </UseTemplate>
                 <UseTemplate Name="ASOBO_GT_Update">
-                    <FREQUENCY>16</FREQUENCY> <!-- 16 Hz -->
+                    <FREQUENCY>16</FREQUENCY>          <!-- 16 Hz -->
                     <UPDATE_CODE>(B:LANDING_GEAR_Check_Down, Bool) if{ (L:XMLVAR_LandingGearLightTesting) ! (&gt;L:XMLVAR_LandingGearLightTesting) }</UPDATE_CODE>
                 </UseTemplate>
                 <UseTemplate Name="ASOBO_GT_Emissive_Gauge">
@@ -468,7 +469,7 @@
                 </UseTemplate>
                 <Component ID="Throttle_Lever" Node="hitbox_lever_throttle">
                     <Parameters Type="Override">
-                        <IDLE>0.5</IDLE>
+                        <IDLE>0.37</IDLE>
                         <TRUE_IDLE_01 Process="Float">0 (A:THROTTLE LOWER LIMIT, percent) - 100 (A:THROTTLE LOWER LIMIT, percent) - /</TRUE_IDLE_01>
                         <UPPER_LIMIT>16384</UPPER_LIMIT>
                         <LOWER_LIMIT>(A:THROTTLE LOWER LIMIT, position 16k)</LOWER_LIMIT>
@@ -548,7 +549,7 @@
                     </UseTemplate>
                     <UseTemplate Name="ASOBO_GT_Anim_Code">
                         <ANIM_NAME>LEVER_THROTTLE_UNLOCK_TRIGGER</ANIM_NAME>
-                        <ANIM_CODE>(O:_Anim_Pos_X_Current) 0 == (O:_Anim_Pos_Y_Current) 49.9 &lt; and 100 *</ANIM_CODE>
+                        <ANIM_CODE>(O:_Anim_Pos_X_Current) 0 == (O:_Anim_Pos_Y_Current) #IDLE# 99 * &lt; and 100 *</ANIM_CODE>
                     </UseTemplate>
 					<UseTemplate Name="ASOBO_GT_Anim_Code">
 						<ANIM_NAME>lever_throttle_leather_Left</ANIM_NAME> 
@@ -716,7 +717,7 @@
                                 <BINDING_DEC_0_PARAM_1_IS_DYNAMIC>True</BINDING_DEC_0_PARAM_1_IS_DYNAMIC>
                             </False>
                         </Condition>
-                        <SET_ARG_COUNT>2</SET_ARG_COUNT> <!-- Axis value, feathered/unfeathered -->
+                        <SET_ARG_COUNT>2</SET_ARG_COUNT>            <!-- Axis value, feathered/unfeathered -->
                         <SET_PARAM_0>p0 16384 *</SET_PARAM_0>
                         <SET_PARAM_0_IS_DYNAMIC>True</SET_PARAM_0_IS_DYNAMIC>
                         <SET_PARAM_1>1 0 p1 ?</SET_PARAM_1>
@@ -1026,7 +1027,7 @@
             <UseTemplate Name="ASOBO_FUEL_Knob_Selector_Template">
                 <ANIM_NAME>knob_fuel_tank_selection</ANIM_NAME>
                 <NODE_ID>knob_fuel_tank_selection</NODE_ID>
-                <INVERT_ANIM>True</INVERT_ANIM>
+                <INVERT_ANIM>1</INVERT_ANIM>
                 <SELECTOR_STATE_0>LEFT</SELECTOR_STATE_0>
                 <SELECTOR_STATE_1>RIGHT</SELECTOR_STATE_1>
                 <SELECTOR_STATE_2>OFF</SELECTOR_STATE_2>
@@ -1465,6 +1466,7 @@
             </Component>
             <CameraTitle>Overhead</CameraTitle>
         </Component>
+
         <Component ID="LIGHTING_Lights">
             <UseTemplate Name="ASOBO_LIGHTING_Switch_Light_Wing_Template">
                 <ANIM_NAME>DEICESYSTEM_SWITCH_LIGHT_WING</ANIM_NAME>
@@ -1485,66 +1487,252 @@
 
         <!-- ELECTRICAL ################################# -->
         <Component ID="ELECTRICAL">
-            <UseTemplate Name="ASOBO_GT_Update">
-                <UPDATE_ONCE>True</UPDATE_ONCE>
-                <UPDATE_CODE>(A:ELECTRICAL MASTER BATTERY, Bool) ! (&gt;B:ELECTRICAL_Crash_Lever_Set) (&gt;B:ENGINE_Starter_1_Off)</UPDATE_CODE>
-            </UseTemplate>
+            
+            
+            <!-- Note: for crash bar, position 0 is UP, position 1 is DOWN. -->
+
+            <!--
+                Periodically check if source or generator switches have been set to a non-OFF position while the crash bar is down,
+                and if so, move the crash bar to the up position.
+            -->
             <UseTemplate Name="ASOBO_GT_Update">
                 <FREQUENCY>5</FREQUENCY>
-                <UPDATE_CODE>(B:ELECTRICAL_Crash_Lever, Bool) sp0 (B:ELECTRICAL_Battery_1) 2 != l0 and (B:ELECTRICAL_Alternator_1) 2 != l0 and or if{ (&gt;B:ELECTRICAL_Crash_Lever_Up) }</UPDATE_CODE>
+                <UPDATE_CODE>(B:ELECTRICAL_Battery_1) 1 == (L:XMLVAR_Elec_Source_Switch_State) 0 != (L:XMLVAR_Elec_Generator_Switch_State) 0 != or and if{ 0 (&gt;B:ELECTRICAL_Battery_1_Set) }</UPDATE_CODE>
             </UseTemplate>
-            <UseTemplate Name="ASOBO_ELECTRICAL_Switch_Battery_Master_Template">
-                <SWITCH_TYPE>GPU_BATT_OFF</SWITCH_TYPE>
-                <NODE_ID>electricpower_switch_source</NODE_ID>
-                <ANIM_NAME>electricpower_switch_source</ANIM_NAME>
-                <CODE_POS_0_VERIF>(B:ELECTRICAL_Crash_Lever, Bool) !</CODE_POS_0_VERIF>
-                <CODE_POS_1_VERIF>(B:ELECTRICAL_Crash_Lever, Bool) !</CODE_POS_1_VERIF>
-                <PART_ID>ELECTRICAL_Switch_Source</PART_ID>
-                <THRESHOLD_MOUSE>0.01</THRESHOLD_MOUSE>
-                <TT_DESCRIPTION_ID>@TT_Package.ELECTRICAL_SWITCH_SOURCE_ACTION_SET</TT_DESCRIPTION_ID>
-                <TOOLTIP_TITLE>@TT_Package.ELECTRICAL_SWITCH_SOURCE_TITLE</TOOLTIP_TITLE>
+
+            <!--
+                Periodically check to see if the external GPU cable connection has been made and activate/deactivate the GPU accordingly.
+            -->
+            <UseTemplate Name="ASOBO_GT_Update">
+                <FREQUENCY>5</FREQUENCY>
+                <UPDATE_CODE>
+                (A:INTERACTIVE POINT OPEN:0, percent over 100) 1 == (A:EXTERNAL POWER ON:1, Bool) != if{ 1 (&gt;K:TOGGLE_EXTERNAL_POWER) }
+                </UPDATE_CODE>
             </UseTemplate>
-            <UseTemplate Name="ASOBO_ELECTRICAL_Switch_Alternator_Template">
-                <TYPE>STBY_MAIN_OFF</TYPE>
-                <NODE_ID>electricpower_switch_generator</NODE_ID>
-                <ANIM_NAME>electricpower_switch_generator</ANIM_NAME>
-                <CODE_POS_0_VERIF>(B:ELECTRICAL_Crash_Lever, Bool) !</CODE_POS_0_VERIF>
-                <CODE_POS_1_VERIF>(B:ELECTRICAL_Crash_Lever, Bool) !</CODE_POS_1_VERIF>
-                <PART_ID>ELECTRICAL_Switch_Generator</PART_ID>
-                <THRESHOLD_MOUSE>0.01</THRESHOLD_MOUSE>
-                <TT_DESCRIPTION_ID>@TT_Package.ELECTRICAL_SWITCH_GENERATOR_ACTION_SET</TT_DESCRIPTION_ID>
-                <TOOLTIP_TITLE>@TT_Package.ELECTRICAL_SWITCH_GENERATOR_TITLE</TOOLTIP_TITLE>
-            </UseTemplate>
+
+            <!-- Crash Bar -->
             <Component ID="ELECTRICAL_Lever_GeneratorReset" Node="hitbox_electricpower_lever_generatorreset">
                 <UseInputEvent ID="ELECTRICAL">
-                    <BTN_ID>Crash_Lever</BTN_ID>
-                    <INPUT_EVENT_ID_SOURCE>ELECTRICAL</INPUT_EVENT_ID_SOURCE>
-                    <SET_STATE_EXTERNAL>(&gt;O:XMLVAR_ELECTRICAL_Crash_Lever_Down) p0 if{ (&gt;B:ELECTRICAL_Battery_1_Off) (&gt;B:ELECTRICAL_Alternator_1_Off) }</SET_STATE_EXTERNAL>
-                    <GET_STATE_EXTERNAL>(O:XMLVAR_ELECTRICAL_Crash_Lever_Down) sp0</GET_STATE_EXTERNAL>
-                    <STR_STATE_OFF>Up</STR_STATE_OFF>
-                    <STR_STATE_ON>Down</STR_STATE_ON>
-                    <TT_VALUE_OFF>(R:1:@TT_Package.GT_STATE_UP)</TT_VALUE_OFF>
-                    <TT_VALUE_ON>(R:1:@TT_Package.GT_STATE_DOWN)</TT_VALUE_ON>
-                    <SIM_STATE_IS_ON_EXTERNAL>l0</SIM_STATE_IS_ON_EXTERNAL>
-                    <TT_DESCRIPTION_ID>@TT_Package.ELECTRICAL_LEVER_GENERATORRESET_ACTION</TT_DESCRIPTION_ID>
-                    <TT_ICON>MOVE_AXIS_Y</TT_ICON>
-                    <TT_INTERACTION>PRIMARY_DOWN+Y_AXIS</TT_INTERACTION>
-                    <TT_INTERACTION_LOCKABLE>Y_AXIS</TT_INTERACTION_LOCKABLE>
-                    <ANIM>EXTERNAL</ANIM>
+                <TYPE>ON_OFF</TYPE>
+                <IS_AIRLINER>False</IS_AIRLINER>
+                <BATTERY_ID>1</BATTERY_ID>
+                <TT_VALUE_OFF>(R:1:@TT_Package.GT_STATE_UP)</TT_VALUE_OFF>
+                <TT_VALUE_ON>(R:1:@TT_Package.GT_STATE_DOWN)</TT_VALUE_ON>
+                <TT_DESCRIPTION_ID>@TT_Package.ELECTRICAL_LEVER_GENERATORRESET_ACTION</TT_DESCRIPTION_ID>
+                <TT_ICON>MOVE_AXIS_Y</TT_ICON>
+                <INTERACTION_FLAGS>PRIMARY_DOWN+Y_AXIS</INTERACTION_FLAGS>
+                <INTERACTION_LOCKABLE_FLAGS>Y_AXIS</INTERACTION_LOCKABLE_FLAGS>
+
+                <!-- Force source and alternator switches to off position when moving crash lever into the down position. -->
+                <ON_STATE_CHANGED_EXTERNAL_CODE>(O:ELECTRICAL_Battery_1_Position) 1 == if{ 0 (&gt;B:ELECTRICAL_Source_Switch_Set) 0 (&gt;B:ELECTRICAL_Generator_Switch_Set) }</ON_STATE_CHANGED_EXTERNAL_CODE>
                 </UseInputEvent>
+
                 <UseTemplate Name="ASOBO_GT_Lever_DraggingYAxis_Code">
-                    <TOOLTIP_TITLE>@TT_Package.ELECTRICAL_LEVER_GENERATORRESET_TITLE</TOOLTIP_TITLE>
-                    <TOOLTIP_ENTRY_0>ELECTRICAL_Crash_Lever</TOOLTIP_ENTRY_0>
-                    <PART_ID>ELECTRICAL_Lever_GeneratorReset</PART_ID>
-                    <ANIM_NAME>electricpower_lever_generatorreset</ANIM_NAME>
-                    <SINGLE_STEP/>
-                    <UP_CODE>(&gt;B:ELECTRICAL_Crash_Lever_Up)</UP_CODE>
-                    <DOWN_CODE>(&gt;B:ELECTRICAL_Crash_Lever_Down)</DOWN_CODE>
-                    <ANIM_CODE>(B:ELECTRICAL_Crash_Lever, Bool) 100 *</ANIM_CODE>
-                    <WWISE_EVENT_1>electricpower_generatorreset_lever_on</WWISE_EVENT_1>
-                    <WWISE_EVENT_2>electricpower_generatorreset_lever_off</WWISE_EVENT_2>
+                <TOOLTIP_TITLE>@TT_Package.ELECTRICAL_LEVER_GENERATORRESET_TITLE</TOOLTIP_TITLE>
+                <TOOLTIP_ENTRY_0>ELECTRICAL_Battery_1</TOOLTIP_ENTRY_0>
+                <PART_ID>ELECTRICAL_Lever_GeneratorReset</PART_ID>
+                <ANIM_NAME>electricpower_lever_generatorreset</ANIM_NAME>
+                <SINGLE_STEP/>
+                <UP_CODE>(O:Position) sp0 l0 0 == if{ 1 (&gt;B:ELECTRICAL_Battery_1_Set) } l0 1 == if{ 0 (&gt;B:ELECTRICAL_Battery_1_Set) }</UP_CODE>
+                <DOWN_CODE>(O:Position) sp0 l0 0 == if{ 1 (&gt;B:ELECTRICAL_Battery_1_Set) } l0 1 == if{ 0 (&gt;B:ELECTRICAL_Battery_1_Set) }</DOWN_CODE>
+                <ANIM_CODE>(B:ELECTRICAL_Battery_1) 100 *</ANIM_CODE>
+                <WWISE_EVENT_1>electricpower_generatorreset_lever_on</WWISE_EVENT_1>
+                <WWISE_EVENT_2>electricpower_generatorreset_lever_off</WWISE_EVENT_2>
                 </UseTemplate>
             </Component>
+
+            <!-- Source Switch (0 = Off, 1 = Batt, 2 = GPU) -->
+            <Component ID="electricpower_switch_source" Node="electricpower_switch_source">
+                <Parameters Type="Default">
+                <!-- Disconnect battery from main bus if switch is in OFF position -->
+                <!-- Connect GPU bus to main bus if and only if switch is in GPU position -->
+                <!-- Disconnect standby generator bus from main bus if switch is in GPU position -->
+                <UPDATE_BUS_CONNECTION>
+                    5 (A:1:BUS CONNECTION ON:1, Bool) l0 0 &gt; != if{
+                    5 1 (&gt;K:2:ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE)
+                    }
+                    5 (A:1:BUS CONNECTION ON:14, Bool) l0 2 == != if{
+                    5 14 (&gt;K:2:ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE)
+                    }
+                    20 (A:1:BUS CONNECTION ON:13, Bool) l0 2 &lt; != if{
+                    20 13 (&gt;K:2:ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE)
+                    }
+                </UPDATE_BUS_CONNECTION>
+                </Parameters>
+
+                <UseInputEvent ID="ELECTRICAL">
+                <BTN_ID>Source_Switch</BTN_ID>
+                <INPUT_EVENT_ID_SOURCE>ELECTRICAL</INPUT_EVENT_ID_SOURCE>
+                <NUM_STATES>3</NUM_STATES>
+                <GET_STATE_EXTERNAL>(L:XMLVAR_Elec_Source_Switch_State)</GET_STATE_EXTERNAL>
+                <ON_AFTER_INIT_CODE>
+                    (O:ELECTRICAL_Source_Switch_Position) sp0 #UPDATE_BUS_CONNECTION#
+                </ON_AFTER_INIT_CODE>
+                <SET_STATE_EXTERNAL>
+                    (O:ELECTRICAL_Source_Switch_Position) sp0 l0 (&gt;L:XMLVAR_Elec_Source_Switch_State) #UPDATE_BUS_CONNECTION#
+                </SET_STATE_EXTERNAL>
+                <TT_DESCRIPTION_ID>@TT_Package.ELECTRICAL_SWITCH_SOURCE_ACTION_SET</TT_DESCRIPTION_ID>
+                <TT_ICON>MOVE_AXIS_Y</TT_ICON>
+                <TT_INTERACTION>PRIMARY_DOWN+Y_AXIS</TT_INTERACTION>
+                <TT_INTERACTION_LOCKABLE>Y_AXIS</TT_INTERACTION_LOCKABLE>
+                <TT_VALUE>
+                    (O:ELECTRICAL_Source_Switch_Position) sp0
+                    l0 0 == if{ (R:1:@TT_Package.GT_STATE_OFF) quit }
+                    l0 1 == if{ (R:1:@TT_Package.GT_STATE_BATTERY) quit }
+                    l0 2 == if{ (R:1:@TT_Package.GT_STATE_GPU) quit }
+                </TT_VALUE>
+                <ANIM>EXTERNAL</ANIM>
+
+                <STR_STATE_0>Off</STR_STATE_0>
+                <STR_STATE_1>Batt</STR_STATE_1>
+                <STR_STATE_2>Gpu</STR_STATE_2>
+
+                <!-- Intercept external power set/toggle key events to set the switch state instead. -->
+
+                <BINDING_SET_3>TOGGLE_EXTERNAL_POWER</BINDING_SET_3>
+                <BINDING_SET_3_EVENT_ID>TOGGLE_EXTERNAL_POWER</BINDING_SET_3_EVENT_ID>
+                <BINDING_SET_3_EVENT_ID_ONLY>True</BINDING_SET_3_EVENT_ID_ONLY>
+                <BINDING_SET_3_PARAM_0_IS_DYNAMIC>True</BINDING_SET_3_PARAM_0_IS_DYNAMIC>
+                <BINDING_SET_3_PARAM_0>
+                    p1 0 == p1 1 == or if{
+                    (B:ELECTRICAL_Source_Switch) 2 == if{
+                        1
+                    } els{
+                        2
+                    }
+                    } els{
+                    (B:ELECTRICAL_Source_Switch)
+                    }
+                </BINDING_SET_3_PARAM_0>
+
+                <BINDING_SET_4>SET_EXTERNAL_POWER</BINDING_SET_4>
+                <BINDING_SET_4_EVENT_ID>SET_EXTERNAL_POWER</BINDING_SET_4_EVENT_ID>
+                <BINDING_SET_4_EVENT_ID_ONLY>True</BINDING_SET_4_EVENT_ID_ONLY>
+                <BINDING_SET_4_PARAM_0_IS_DYNAMIC>True</BINDING_SET_4_PARAM_0_IS_DYNAMIC>
+                <BINDING_SET_4_PARAM_0>
+                    p1 0 == p1 1 == or if{
+                    p2 0 == if{
+                        1
+                    } els{
+                        2
+                    }
+                    } els{
+                    (B:ELECTRICAL_Source_Switch)
+                    }
+                </BINDING_SET_4_PARAM_0>
+                </UseInputEvent>
+
+                <UseTemplate Name="ASOBO_GT_Switch_3States">
+                <TOOLTIP_TITLE>@TT_Package.ELECTRICAL_SWITCH_SOURCE_TITLE</TOOLTIP_TITLE>
+                <TOOLTIP_ENTRY_0>ELECTRICAL_Source_Switch</TOOLTIP_ENTRY_0>
+                <PART_ID>ELECTRICAL_Switch_Source</PART_ID>
+                <ANIM_NAME>electricpower_switch_source</ANIM_NAME>
+                <WWISE_EVENT>battery_switch</WWISE_EVENT>
+
+                <!-- GPU position -->
+                <STATE0_TEST>(O:ELECTRICAL_Source_Switch_Position) 2 ==</STATE0_TEST>
+                <CODE_POS_0_VERIF>(A:ELECTRICAL MASTER BATTERY:1, Bool)</CODE_POS_0_VERIF>
+                <CODE_POS_0>2 (&gt;B:ELECTRICAL_Source_Switch_Set)</CODE_POS_0>
+
+                <!-- Batt position -->
+                <STATE1_TEST>(O:ELECTRICAL_Source_Switch_Position) 1 ==</STATE1_TEST>
+                <CODE_POS_1_VERIF>(A:ELECTRICAL MASTER BATTERY:1, Bool)</CODE_POS_1_VERIF>
+                <CODE_POS_1>1 (&gt;B:ELECTRICAL_Source_Switch_Set)</CODE_POS_1>
+
+                <!-- Off position -->
+                <STATE2_TEST>(O:ELECTRICAL_Source_Switch_Position) 0 ==</STATE2_TEST>
+                <CODE_POS_2>0 (&gt;B:ELECTRICAL_Source_Switch_Set)</CODE_POS_2>
+                </UseTemplate>
+            </Component>
+
+            <!-- Generator Switch (0 = Off, 1 = Main, 2 = Stby) -->
+            <Component ID="electricpower_switch_generator" Node="electricpower_switch_generator">
+                <Parameters Type="Default">
+                <!-- Toggle main and standby generator on/off as appropriate -->
+                <UPDATE_GENERATOR_STATE>
+                    (O:ELECTRICAL_Generator_Switch_Position) sp0
+                    l0 (&gt;L:XMLVAR_Elec_Generator_Switch_State)
+                    l0 0 == if{
+                    0 sp1 0 sp2
+                    }
+                    l0 1 == if{
+                    1 sp1 0 sp2
+                    }
+                    l0 2 == if{
+                    0 sp1 1 sp2
+                    }
+
+                    (A:GENERAL ENG MASTER ALTERNATOR:1, bool) l1 != if{ (&gt;K:TOGGLE_ALTERNATOR1) }
+                    (A:GENERAL ENG MASTER ALTERNATOR:2, bool) l2 != if{ (&gt;K:TOGGLE_ALTERNATOR2) }
+
+                    5 (A:1:BUS CONNECTION ON:12, Bool) l1 != if{ 5 12 (&gt;K:2:ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE) }
+                    5 (A:1:BUS CONNECTION ON:20, Bool) l2 != if{ 5 20 (&gt;K:2:ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE) }
+                </UPDATE_GENERATOR_STATE>
+                </Parameters>
+
+                <UseInputEvent ID="ELECTRICAL">
+                <BTN_ID>Generator_Switch</BTN_ID>
+                <INPUT_EVENT_ID_SOURCE>ELECTRICAL</INPUT_EVENT_ID_SOURCE>
+                <NUM_STATES>3</NUM_STATES>
+                <GET_STATE_EXTERNAL>
+                    (A:GENERAL ENG MASTER ALTERNATOR:1, bool) sp0 (A:GENERAL ENG MASTER ALTERNATOR:2, bool) sp1
+                </GET_STATE_EXTERNAL>
+                <ENUM_VAL_TO_POS_EXTERNAL>
+                    l1 if{
+                    2
+                    } els{
+                    l0 if{
+                        1
+                    } els{
+                        0
+                    }
+                    }
+                </ENUM_VAL_TO_POS_EXTERNAL>
+                <ON_AFTER_INIT_CODE>#UPDATE_GENERATOR_STATE#</ON_AFTER_INIT_CODE>
+                <SET_STATE_EXTERNAL>#UPDATE_GENERATOR_STATE#</SET_STATE_EXTERNAL>
+                <TT_DESCRIPTION_ID>@TT_Package.ELECTRICAL_SWITCH_GENERATOR_ACTION_SET</TT_DESCRIPTION_ID>
+                <TT_ICON>MOVE_AXIS_Y</TT_ICON>
+                <TT_INTERACTION>PRIMARY_DOWN+Y_AXIS</TT_INTERACTION>
+                <TT_INTERACTION_LOCKABLE>Y_AXIS</TT_INTERACTION_LOCKABLE>
+                <SIMVAR_TO_WATCH_0>GENERAL ENG MASTER ALTERNATOR:1</SIMVAR_TO_WATCH_0>
+                <SIMVAR_TO_WATCH_1>GENERAL ENG MASTER ALTERNATOR:2</SIMVAR_TO_WATCH_1>
+                <TT_VALUE>
+                    (O:ELECTRICAL_Generator_Switch_Position) sp0
+                    l0 0 == if{ (R:1:@TT_Package.GT_STATE_OFF) quit }
+                    l0 1 == if{ (R:1:@TT_Package.GT_STATE_MAIN) quit }
+                    l0 2 == if{ (R:1:@TT_Package.GT_STATE_STANDBY) quit }
+                </TT_VALUE>
+                <ANIM>EXTERNAL</ANIM>
+
+                <STR_STATE_0>Off</STR_STATE_0>
+                <STR_STATE_1>Main</STR_STATE_1>
+                <STR_STATE_2>Stby</STR_STATE_2>
+                </UseInputEvent>
+
+                <UseTemplate Name="ASOBO_GT_Switch_3States">
+                <TOOLTIP_TITLE>@TT_Package.ELECTRICAL_SWITCH_GENERATOR_TITLE</TOOLTIP_TITLE>
+                <TOOLTIP_ENTRY_0>ELECTRICAL_Generator_Switch</TOOLTIP_ENTRY_0>
+                <PART_ID>ELECTRICAL_Switch_Generator</PART_ID>
+                <ANIM_NAME>electricpower_switch_generator</ANIM_NAME>
+                <WWISE_EVENT>alternator_switch</WWISE_EVENT>
+
+                <!-- Standby position -->
+                <STATE0_TEST>(O:ELECTRICAL_Generator_Switch_Position) 2 ==</STATE0_TEST>
+                <CODE_POS_0_VERIF>(A:ELECTRICAL MASTER BATTERY:1, Bool)</CODE_POS_0_VERIF>
+                <CODE_POS_0>2 (&gt;B:ELECTRICAL_Generator_Switch_Set)</CODE_POS_0>
+
+                <!-- Main position -->
+                <STATE1_TEST>(O:ELECTRICAL_Generator_Switch_Position) 1 ==</STATE1_TEST>
+                <CODE_POS_1_VERIF>(A:ELECTRICAL MASTER BATTERY:1, Bool)</CODE_POS_1_VERIF>
+                <CODE_POS_1>1 (&gt;B:ELECTRICAL_Generator_Switch_Set)</CODE_POS_1>
+
+                <!-- Off position -->
+                <STATE2_TEST>(O:ELECTRICAL_Generator_Switch_Position) 0 ==</STATE2_TEST>
+                <CODE_POS_2>0 (&gt;B:ELECTRICAL_Generator_Switch_Set)</CODE_POS_2>
+                </UseTemplate>
+            </Component>
+
+            <!-- Main Generator Reset -->
             <Component ID="ELECTRICAL_Push_Main" Node="ElectricPower_Push_Main">
                 <UseInputEvent ID="ELECTRICAL">
                     <BTN_ID>Main_Button</BTN_ID>
@@ -1565,6 +1753,8 @@
                     <NORMALIZED_TIME_2>0.5</NORMALIZED_TIME_2>
                 </UseTemplate>
             </Component>
+
+            <!-- Standby Generator Reset -->
             <Component ID="ELECTRICAL_Push_Standby" Node="ElectricPower_Push_Stby">
                 <UseInputEvent ID="ELECTRICAL">
                     <BTN_ID>Standby_Button</BTN_ID>
@@ -1590,27 +1780,21 @@
 
         <!-- AUTOPILOT ################################## -->
         <Component ID="AUTOPILOT">
-            <DefaultTemplateParameters>
-                <DONT_APPEND_ID>True</DONT_APPEND_ID>
-                <EMISSIVE_CODE>(A:LIGHT POTENTIOMETER:4, Percent over 100) @LightDimmingScale *</EMISSIVE_CODE>
-            </DefaultTemplateParameters>
+            <Parameters Type="Default">
+            <DONT_APPEND_ID>True</DONT_APPEND_ID>
+            <DEFAULT_TEMPLATE_EMISSIVE>ASOBO_LIGHTING_Panel_Emissive_Template</DEFAULT_TEMPLATE_EMISSIVE>
+            <EMISSIVE_MIN>0.02</EMISSIVE_MIN>
+            <EMISSIVE_MAX>1</EMISSIVE_MAX>
+            <EMISSIVE_GAMMA>2.2</EMISSIVE_GAMMA>
+        </Parameters>
+        <Parameters Type="Default">
+            <!-- AFCS controller key backlighting is controlled by G3000 software. -->
+            <NO_POTENTIOMETER_FACTOR>True</NO_POTENTIOMETER_FACTOR>
+            <EMISSIVE_CODE>#EMISSIVE_MIN# (L:WTG3000_TBM930_Backlight, number) #EMISSIVE_GAMMA# pow #EMISSIVE_MAX# #EMISSIVE_MIN# - * +</EMISSIVE_CODE>
+        </Parameters>
 
             <!-- BARO - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-            <UseTemplate Name="ASOBO_AUTOPILOT_Knob_Baro_Template">
-                <NODE_ID>KNOB_BARO_STD_1</NODE_ID>
-                <ANIM_NAME_KNOB>KNOB_BARO_STD_1</ANIM_NAME_KNOB>
-                <ANIM_NAME_PUSH>KNOB_BARO_STD_1_PUSH</ANIM_NAME_PUSH>
-                <ID>1</ID>
-                <PUSH/>
-            </UseTemplate>
-
-            <UseTemplate Name="ASOBO_AUTOPILOT_Knob_Baro_Template">
-                <NODE_ID>KNOB_BARO_STD_2</NODE_ID>
-                <ANIM_NAME_KNOB>KNOB_BARO_STD_2</ANIM_NAME_KNOB>
-                <ANIM_NAME_PUSH>KNOB_BARO_STD_2_PUSH</ANIM_NAME_PUSH>
-                <ID>2</ID>
-                <PUSH/>
-                <BARO_ID>1</BARO_ID>
+            <UseTemplate Name="WT_TBM930_SplitScreen_Baro_Knobs_Template">
             </UseTemplate>
 
             <UseTemplate Name="ASOBO_AUTOPILOT_Knob_Baro_Template">
@@ -1685,7 +1869,7 @@
                 <NODE_ID>push_autopilot_alt</NODE_ID>
             </UseTemplate>
 
-            <UseTemplate Name="ASOBO_AUTOPILOT_Knob_Altitude_Template">
+            <UseTemplate Name="WT_G3000_Knob_Altitude_Template">
                 <ANIM_NAME>knob_autopilot_altsel</ANIM_NAME>
                 <NODE_ID>knob_autopilot_altsel</NODE_ID>
                 <INCREMENT>100</INCREMENT>
@@ -1695,6 +1879,7 @@
             <UseTemplate Name="ASOBO_AUTOPILOT_Push_FlightLevelChange_Template">
                 <ANIM_NAME>push_autopilot_flc</ANIM_NAME>
                 <NODE_ID>push_autopilot_flc</NODE_ID>
+
             </UseTemplate>
 
             <!-- VERTICAL SPEED - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -1702,13 +1887,14 @@
                 <ANIM_NAME>push_autopilot_vs</ANIM_NAME>
                 <NODE_ID>push_autopilot_vs</NODE_ID>
             </UseTemplate>
-            <UseTemplate Name="ASOBO_AUTOPILOT_Knob_VerticalSpeed_Template">
+
+            <UseTemplate Name="WT_G3000_Knob_VerticalSpeed_Template">
                 <HITBOX_UP_NODE_ID>hitbox_wheel_autopilot_vs_DN</HITBOX_UP_NODE_ID>
                 <HITBOX_DOWN_NODE_ID>hitbox_wheel_autopilot_vs_UP</HITBOX_DOWN_NODE_ID>
                 <ANIM_NAME>wheel_autopilot_vs</ANIM_NAME>
                 <NODE_ID>wheel_autopilot_vs</NODE_ID>
                 <UP_DEC_DN_INC>True</UP_DEC_DN_INC>
-                <SET_AIRSPEED_ON_FLC>True</SET_AIRSPEED_ON_FLC>
+                <PITCH_INCREMENT>0.5</PITCH_INCREMENT>
             </UseTemplate>
 
             <!-- NAV - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -1725,16 +1911,31 @@
 
             <!-- SPEED - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
             <UseTemplate Name="ASOBO_AUTOPILOT_Push_SpeedToggle_Template">
+                <TYPE>AIRBUS</TYPE>
                 <ANIM_NAME>push_autopilot_spd</ANIM_NAME>
                 <NODE_ID>push_autopilot_spd</NODE_ID>
             </UseTemplate>
 
             <!-- Wing Leveler - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-            <UseTemplate Name="ASOBO_AUTOPILOT_Push_Level_Template">
+            <UseTemplate Name="ASOBO_AUTOPILOT_Push_Template">
                 <ANIM_NAME>push_autopilot_LVL</ANIM_NAME>
                 <NODE_ID>push_autopilot_LVL</NODE_ID>
                 <ACTIVE_NODE_ID>push_autopilot_LVL_Text</ACTIVE_NODE_ID>
                 <NO_TEXT_EMISSIVE>True</NO_TEXT_EMISSIVE>
+                <!-- Below is copied from ASOBO_AUTOPILOT_Push_Level_Template -->
+                <DEFAULT_NAME>Level</DEFAULT_NAME>
+                <EMISSIVE_SIMVAR_ACTIVE>AUTOPILOT WING LEVELER</EMISSIVE_SIMVAR_ACTIVE>
+                <SIMVAR_TO_WATCH_0>AUTOPILOT WING LEVELER</SIMVAR_TO_WATCH_0>
+                <SIM_STATE_IS_ON_EXTERNAL>l0</SIM_STATE_IS_ON_EXTERNAL>
+                <GET_STATE_EXTERNAL>(A:AUTOPILOT WING LEVELER, Bool) sp0</GET_STATE_EXTERNAL>
+                <SET_STATE_EXTERNAL>
+                (&gt;K:AP_WING_LEVELER_ON)
+                (&gt;K:AP_PITCH_LEVELER_ON)
+                (&gt;K:AUTOPILOT_ON)
+                </SET_STATE_EXTERNAL>
+                <BTN_ID>Level_Mode</BTN_ID>
+                <TT_DESCRIPTION_ID>@TT_Package.AUTOPILOT_PUSH_LEVELMODE_ACTION_SET</TT_DESCRIPTION_ID>
+                <TOOLTIP_TITLE>@TT_Package.AUTOPILOT_PUSH_LEVELMODE_TITLE</TOOLTIP_TITLE>
             </UseTemplate>
 
             <!-- AP Transfer - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -1757,20 +1958,7 @@
 
             <!-- COURSE - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-            <UseTemplate Name="ASOBO_AUTOPILOT_Knob_Course_Template">
-                <ID>1</ID>
-                <NODE_ID>knob_autopilot_CRS1</NODE_ID>
-                <ANIM_NAME>knob_autopilot_CRS1</ANIM_NAME>
-                <ANIM_NAME_PUSH>knob_autopilot_CRS1_push</ANIM_NAME_PUSH>
-                <PUSH/>
-            </UseTemplate>
-
-            <UseTemplate Name="ASOBO_AUTOPILOT_Knob_Course_Template">
-                <ID>2</ID>
-                <NODE_ID>knob_autopilot_CRS2</NODE_ID>
-                <ANIM_NAME>knob_autopilot_CRS2</ANIM_NAME>
-                <ANIM_NAME_PUSH>knob_autopilot_CRS2_push</ANIM_NAME_PUSH>
-                <PUSH/>
+            <UseTemplate Name="WT_TBM930_SplitScreen_Course_Knobs_Template">
             </UseTemplate>
 
             <CameraTitle>AutoPilot</CameraTitle>
@@ -1817,7 +2005,7 @@
                 4. 2 sec Right Light
                 5. Back to step 1
             -->
-            <Update Frequency="1">
+            <Update Frequency = "1">
                 (A:STRUCTURAL DEICE SWITCH, Bool) if{
                     (I:XMLVAR_DeiceAirframeOperationStep) ++ 67 % (&gt;I:XMLVAR_DeiceAirframeOperationStep)
                     (I:XMLVAR_DeiceAirframeOperationStep) 0 &gt;=
@@ -1897,94 +2085,59 @@
             <CameraTitle>PFD</CameraTitle>
         </Component>
 
-        <!-- AS3000 ######################################-->
         <Component ID="AS3000">
-            <UseInputEvent ID="MODEL_BEHAVIOR">
-                <IE_NAME>Prevent_Avionics_Off</IE_NAME>
-                <SIMVAR_TO_WATCH_0>AVIONICS MASTER SWITCH</SIMVAR_TO_WATCH_0>
-                <INIT_CODE>(A:AVIONICS MASTER SWITCH, Bool) ! if{ 1 (&gt;K:AVIONICS_MASTER_SET) }</INIT_CODE>
-            </UseInputEvent>
-            <Component ID="AS3000_MFD">
-                <UseTemplate Name="ASOBO_AS3000_MFD">
-                    <DONT_APPEND_ID>True</DONT_APPEND_ID>
-                    <SCREEN_NODE_ID>AS_MFD</SCREEN_NODE_ID>
-                </UseTemplate>
-                <CameraTitle>MFD</CameraTitle>
-                <Component ID="WT_AS3000_MFD_Screen" Node="WT_MFD">
-                    <UseTemplate Name="ASOBO_GT_Visibility_Code">
-                        <VISIBILITY_CODE>0</VISIBILITY_CODE>
-                    </UseTemplate>
-                </Component>
-            </Component>
-            <Component ID="AS3000_PFD">
-                <Parameters Type="Default">
-                    <DONT_APPEND_ID>True</DONT_APPEND_ID>
-                </Parameters>
-                <UseTemplate Name="ASOBO_AS3000_PFD">
-                    <ID>1</ID>
-                    <SCREEN_NODE_ID>AS_PFD_L</SCREEN_NODE_ID>
-                </UseTemplate>
-                <Component ID="WT_AS3000_PFD_Screen_L" Node="WT_PFD_L">
-                    <UseTemplate Name="ASOBO_GT_Visibility_Code">
-                        <VISIBILITY_CODE>0</VISIBILITY_CODE>
-                    </UseTemplate>
-                </Component>
-                <UseTemplate Name="ASOBO_AS3000_PFD">
-                    <ID>2</ID>
-                    <SCREEN_NODE_ID>AS_PFD_R</SCREEN_NODE_ID>
-                </UseTemplate>
-                <Component ID="WT_AS3000_PFD_Screen_R" Node="WT_PFD_R">
-                    <UseTemplate Name="ASOBO_GT_Visibility_Code">
-                        <VISIBILITY_CODE>0</VISIBILITY_CODE>
-                    </UseTemplate>
-                </Component>
-                <CameraTitle>PFD</CameraTitle>
-            </Component>
+            <Parameters Type="Default">
+                <EMISSIVE_MIN>0.02</EMISSIVE_MIN>
+                <EMISSIVE_MAX>1</EMISSIVE_MAX>
+                <EMISSIVE_GAMMA>2.2</EMISSIVE_GAMMA>
+            </Parameters>
+            <Parameters Type="Default">
+                <EMISSIVE_CODE>#EMISSIVE_MIN# (L:WTG3000_TBM930_Backlight, number) #EMISSIVE_GAMMA# pow #EMISSIVE_MAX# #EMISSIVE_MIN# - * +</EMISSIVE_CODE>
+            </Parameters>
+            <Parameters Type="Default">
+                <SCREEN_EMISSIVE_CODE>#EMISSIVE_CODE#</SCREEN_EMISSIVE_CODE>
+            </Parameters>
+
+            <!-- Update ambient screen light emissives -->
+            <UseTemplate Name="ASOBO_GT_Update">
+                <FREQUENCY>5</FREQUENCY>
+                <UPDATE_CODE>
+                #EMISSIVE_CODE# sp0
+                l0 (A:CIRCUIT ON:31, Bool) * 100 * sp1
+                l0 (A:CIRCUIT ON:31, Bool) * 100 * sp2
+                l0 (A:CIRCUIT ON:33, Bool) * 100 * sp3
+                l1 l2 + l3 + 3 / (&gt;K:LIGHT_POTENTIOMETER_12_SET)
+                l1 (&gt;K:LIGHT_POTENTIOMETER_20_SET)
+                l2 (&gt;K:LIGHT_POTENTIOMETER_21_SET)
+                l3 (&gt;K:LIGHT_POTENTIOMETER_22_SET)
+                </UPDATE_CODE>
+            </UseTemplate>
+
+            <UseTemplate Name="WT_TBM930_SplitScreen_Displays_Template">
+            </UseTemplate>
         </Component>
 
-        <!-- AS580 #####################################-->
-        <Component ID="AS580">
-            <DefaultTemplateParameters>
-                <DONT_APPEND_ID>True</DONT_APPEND_ID>
-                <TYPE>VARIANT</TYPE>
-            </DefaultTemplateParameters>
-            <UseTemplate Name="ASOBO_AS580_Template">
-                <DISPLAY_POS>L</DISPLAY_POS>
-                <FRAME_NODE_ID>AS580_text</FRAME_NODE_ID>
-                <SCREEN_NODE_ID>AS_TSC_L</SCREEN_NODE_ID>
-                <ID>1</ID>
-            </UseTemplate>
-            <Component ID="WT_AS3000_TSC_Screen_L" Node="WT_TSC_L">
-                <UseTemplate Name="ASOBO_GT_Visibility_Code">
-                    <VISIBILITY_CODE>0</VISIBILITY_CODE>
-                </UseTemplate>
-            </Component>
-            <UseTemplate Name="ASOBO_AS580_Template">
-                <DISPLAY_POS>R</DISPLAY_POS>
-                <SCREEN_NODE_ID>AS_TSC_R</SCREEN_NODE_ID>
-                <ID>2</ID>
-            </UseTemplate>
-            <Component ID="WT_AS3000_TSC_Screen_R" Node="WT_TSC_R">
-                <UseTemplate Name="ASOBO_GT_Visibility_Code">
-                    <VISIBILITY_CODE>0</VISIBILITY_CODE>
-                </UseTemplate>
-            </Component>
-            <CameraTitle>MFD</CameraTitle>
-        </Component>
-
-        <!-- GLASS_COCKPIT ##############################-->
+        <!-- Standby instruments -->
         <Component ID="GLASS_COCKPIT">
-            <Component ID="GLASS_COCKPIT_Screen_Attitude_Text" Node="AttitudeDisplay">
-                <UseTemplate Name="ASOBO_GT_Emissive_Gauge">
-                    <EMISSIVE_CODE>0.5</EMISSIVE_CODE>
-                </UseTemplate>
-            </Component>
+        <Parameters Type="Default">
+            <EMISSIVE_MIN>0.02</EMISSIVE_MIN>
+            <EMISSIVE_MAX>1</EMISSIVE_MAX>
+            <EMISSIVE_GAMMA>2.2</EMISSIVE_GAMMA>
+        </Parameters>
+        <Parameters Type="Default">
+            <!-- Standby instrument backlighting is controlled by panel lighting rheostat. -->
+            <EMISSIVE_CODE>#EMISSIVE_MIN# (A:LIGHT POTENTIOMETER:14, percent over 100) #EMISSIVE_GAMMA# pow #EMISSIVE_MAX# #EMISSIVE_MIN# - * +</EMISSIVE_CODE>
+        </Parameters>
 
-            <Component ID="GLASS_COCKPIT_Screen_Speed_Text" Node="SpeedDisplay">
-                <UseTemplate Name="ASOBO_GT_Emissive_Gauge">
-                    <EMISSIVE_CODE>0.5</EMISSIVE_CODE>
-                </UseTemplate>
-            </Component>
+        <Component ID="GLASS_COCKPIT_Screen_Attitude_Text" Node="AttitudeDisplay">
+            <UseTemplate Name="ASOBO_GT_Emissive_Gauge">
+            </UseTemplate>
+        </Component>
+
+        <Component ID="GLASS_COCKPIT_Screen_Speed_Text" Node="SpeedDisplay">
+            <UseTemplate Name="ASOBO_GT_Emissive_Gauge">
+            </UseTemplate>
+        </Component>
         </Component>
 
         <!-- SAFETY #####################################-->
@@ -2080,6 +2233,12 @@
         </Component>
 
         <Component ID="TT_INOP">
+            <UseTemplate Name="ASOBO_GT_Interaction_Tooltip">
+              <NODE_ID>DISPLAYBACKUP_PUSH_L</NODE_ID>
+            </UseTemplate>
+            <UseTemplate Name="ASOBO_GT_Interaction_Tooltip">
+                <NODE_ID>DISPLAYBACKUP_PUSH_R</NODE_ID>
+            </UseTemplate>
             <UseTemplate Name="ASOBO_GT_Interaction_Tooltip">
                 <NODE_ID>switch_ceiling_testLight</NODE_ID>
             </UseTemplate>

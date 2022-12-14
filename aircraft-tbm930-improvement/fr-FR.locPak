@@ -13,6 +13,8 @@
       "COCKPIT.TOOLTIPS.APTRIM_TURN_ON": "Activer le pilote automatique et les compensateurs",
       "COCKPIT.TOOLTIPS.CIRCUIT_BREAKER_LIGHT_SWITCH_OFF": "Activer le voyant des disjoncteurs",
       "COCKPIT.TOOLTIPS.CIRCUIT_BREAKER_LIGHT_SWITCH_ON": "Désactiver le voyant des disjoncteurs",
+      "COCKPIT.TOOLTIPS.COCKPIT_DOOR_HANDLE_ACTION.0": "Déplacez-vous vers la gauche pour l'ouvrir. Déplacez-vous vers la droite pour la verrouiller.",
+      "COCKPIT.TOOLTIPS.COCKPIT_DOOR_HANDLE_ACTION.1": "Déplacez-vous vers la droite pour fermer la porte.",
       "COCKPIT.TOOLTIPS.CRASHBAR_MOVE_DOWN": "Descendre la barre de protection",
       "COCKPIT.TOOLTIPS.CRASHBAR_MOVE_UP": "Monter la barre de protection",
       "COCKPIT.TOOLTIPS.DIMMING_TURN_OFF": "Désactiver la temporisation d'éclairage",

@@ -8,22 +8,22 @@ ZVelBodyAxis=0
 SimOnGround=True
 
 [Avionics.0]
-Comm1Active=121.900
-Comm1Standby=118.100
-Comm2Active=122.800
-Comm2Standby=132.350
-Comm3Active=122.800
-Comm3Standby=122.800
-Nav1Active=110.30
-Nav1Standby=114.70
+Comm1Active=124.850
+Comm1Standby=124.850
+Comm2Active=124.850
+Comm2Standby=124.850
+Comm3Active=124.850
+Comm3Standby=124.850
+Nav1Active=110.50
+Nav1Standby=113.90
 OBS1=360
-Nav2Active=110.30
-Nav2Standby=114.70
+Nav2Active=110.50
+Nav2Standby=113.90
 OBS2=360
 
 TransponderState=1
-ADFActive=330
-ADF2Active=345
+ADFActive=890
+ADF2Active=890
 DMESelected=1
 ComTransmit=1
 ComReceiveBoth=False
@@ -96,6 +96,7 @@ APUAirBleed=False
 
 [LocalVars.0]
 XMLVAR_LANDING_TAXI_OFF_Switch_Position=2
+XMLVAR_SpeedIsManuallySet=1
 XMLVAR_FuelSelectorAuto=0
 XMLVAR_TBM930_FrontDoor_Unlock=1
 XMLVAR_TBM930_BackDoor_Unlock=1
@@ -119,6 +120,13 @@ WingLights=False
 CabinLights=True
 GlareshieldLights=False
 PedestalLights=False
+
+[Electrical.0]
+circuit.50=False
+circuit.51=False
+bus.1 = bus.11:0
+bus.15 = bus.16:0
+bus.17 = bus.18:0
 
 [AutoPilot.0]
 MasterSwitch=False
@@ -163,6 +171,7 @@ Rudder=050.00
 LeftBrake=100.00
 RightBrake=100.00
 ParkingBrake=100.00
+
 RudderTrimPct=0
 AileronTrimPct=0
 AileronTrimDisabled=True

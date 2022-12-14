@@ -20,6 +20,7 @@ OBS1=360
 Nav2Active=110.50
 Nav2Standby=113.90
 OBS2=360
+
 TransponderState=0
 ADFActive=890
 ADF2Active=890
@@ -160,6 +161,7 @@ Rudder=050.00
 LeftBrake=100.00
 RightBrake=100.00
 ParkingBrake=100.00
+
 RudderTrimPct=0
 AileronTrimPct=0
 AileronTrimDisabled=True

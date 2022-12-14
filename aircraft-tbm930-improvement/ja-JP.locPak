@@ -13,6 +13,8 @@
       "COCKPIT.TOOLTIPS.APTRIM_TURN_ON": "AP とトリムをオンにする",
       "COCKPIT.TOOLTIPS.CIRCUIT_BREAKER_LIGHT_SWITCH_OFF": "サーキット ブレーカーのライトをオンにする",
       "COCKPIT.TOOLTIPS.CIRCUIT_BREAKER_LIGHT_SWITCH_ON": "サーキット ブレーカーのライトをオフにする",
+      "COCKPIT.TOOLTIPS.COCKPIT_DOOR_HANDLE_ACTION.0": "左に動かして開きます。右に動かしてロックします。",
+      "COCKPIT.TOOLTIPS.COCKPIT_DOOR_HANDLE_ACTION.1": "右に動かしてドアを閉めます。",
       "COCKPIT.TOOLTIPS.CRASHBAR_MOVE_DOWN": "クラッシュ バーを下げる",
       "COCKPIT.TOOLTIPS.CRASHBAR_MOVE_UP": "クラッシュ バーを上げる",
       "COCKPIT.TOOLTIPS.DIMMING_TURN_OFF": "調光をオフにする",

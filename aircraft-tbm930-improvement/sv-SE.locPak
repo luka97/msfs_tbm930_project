@@ -13,6 +13,8 @@
       "COCKPIT.TOOLTIPS.APTRIM_TURN_ON": "Slå på AP och trimning",
       "COCKPIT.TOOLTIPS.CIRCUIT_BREAKER_LIGHT_SWITCH_OFF": "Tänd effektbrytarlampa",
       "COCKPIT.TOOLTIPS.CIRCUIT_BREAKER_LIGHT_SWITCH_ON": "Släck effektbrytarlampa",
+      "COCKPIT.TOOLTIPS.COCKPIT_DOOR_HANDLE_ACTION.0": "Flytta åt vänster för att öppna. Flytta åt höger för att låsa.",
+      "COCKPIT.TOOLTIPS.COCKPIT_DOOR_HANDLE_ACTION.1": "Flytta åt höger för att stänga dörren.",
       "COCKPIT.TOOLTIPS.CRASHBAR_MOVE_DOWN": "Flytta ned kraschspaken",
       "COCKPIT.TOOLTIPS.CRASHBAR_MOVE_UP": "Flytta upp kraschspaken",
       "COCKPIT.TOOLTIPS.DIMMING_TURN_OFF": "Stäng av dimning",

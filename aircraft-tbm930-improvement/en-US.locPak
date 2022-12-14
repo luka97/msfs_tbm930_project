@@ -13,6 +13,8 @@
       "COCKPIT.TOOLTIPS.APTRIM_TURN_ON": "Turn ON AP and trims",
       "COCKPIT.TOOLTIPS.CIRCUIT_BREAKER_LIGHT_SWITCH_OFF": "Turn circuit breaker light ON",
       "COCKPIT.TOOLTIPS.CIRCUIT_BREAKER_LIGHT_SWITCH_ON": "Turn circuit breaker light OFF",
+      "COCKPIT.TOOLTIPS.COCKPIT_DOOR_HANDLE_ACTION.0": "Move left to open. Move right to lock.",
+      "COCKPIT.TOOLTIPS.COCKPIT_DOOR_HANDLE_ACTION.1": "Move right to close door.",
       "COCKPIT.TOOLTIPS.CRASHBAR_MOVE_DOWN": "Move down crash bar",
       "COCKPIT.TOOLTIPS.CRASHBAR_MOVE_UP": "Move up crash bar",
       "COCKPIT.TOOLTIPS.DIMMING_TURN_OFF": "Turn OFF dimming",

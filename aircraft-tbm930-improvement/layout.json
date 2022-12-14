@@ -2,73 +2,83 @@
   "content": [
     {
       "path": "de-DE.locPak",
-      "size": 8199,
-      "date": 132705964052076742
+      "size": 8405,
+      "date": 133141955126021443
     },
     {
       "path": "en-US.locPak",
-      "size": 7292,
-      "date": 132531400980914839
+      "size": 7473,
+      "date": 133141955126001495
     },
     {
       "path": "es-ES.locPak",
-      "size": 8140,
-      "date": 132705964052076742
+      "size": 8377,
+      "date": 133141955125971578
+    },
+    {
+      "path": "es-MX.locPak",
+      "size": 8442,
+      "date": 133141955126011479
     },
     {
       "path": "fi-FI.locPak",
-      "size": 8107,
-      "date": 132664311633489558
+      "size": 8336,
+      "date": 133141955126041392
     },
     {
       "path": "fr-FR.locPak",
-      "size": 8751,
-      "date": 132705964052076742
+      "size": 9015,
+      "date": 133141955126031422
     },
     {
       "path": "it-IT.locPak",
-      "size": 8325,
-      "date": 132705964052086699
+      "size": 8543,
+      "date": 133141955126051363
     },
     {
       "path": "ja-JP.locPak",
-      "size": 8994,
-      "date": 132628073610857420
+      "size": 9226,
+      "date": 133141955125961608
     },
     {
       "path": "nb-NO.locPak",
-      "size": 7483,
-      "date": 132889879653106857
+      "size": 7700,
+      "date": 133141955126041392
     },
     {
       "path": "nl-NL.locPak",
-      "size": 7947,
-      "date": 132628073611077380
+      "size": 8176,
+      "date": 133141955125981548
     },
     {
       "path": "pl-PL.locPak",
-      "size": 8373,
-      "date": 132531400980924830
+      "size": 8595,
+      "date": 133141955125971578
     },
     {
       "path": "pt-BR.locPak",
-      "size": 7968,
-      "date": 132531400980924830
+      "size": 8201,
+      "date": 133141955125951639
+    },
+    {
+      "path": "pt-PT.locPak",
+      "size": 8342,
+      "date": 133141955125961608
     },
     {
       "path": "ru-RU.locPak",
-      "size": 11343,
-      "date": 132705964052086699
+      "size": 11673,
+      "date": 133141955126001495
     },
     {
       "path": "sv-SE.locPak",
-      "size": 7644,
-      "date": 132664311633499561
+      "size": 7875,
+      "date": 133141955125951639
     },
     {
       "path": "zh-CN.locPak",
-      "size": 7172,
-      "date": 132531400994837395
+      "size": 7380,
+      "date": 133141955125991534
     },
     {
       "path": "ContentInfo/tbm930-improvement/Thumbnail.jpg",

@@ -1,6 +1,6 @@
 {
   "LocalisationPackage": {
-    "Language": "es-ES",
+    "Language": "es-MX",
     "Strings": {
       "AIRCRAFT.DESCRIPTION": "Cuando en 2016 despegó por primera vez de Tarbes (Francia), el Daher TBM 930 pasó a formar parte de la familia del TBM 900 (que contaba con 2 años) como el turbohélice monomotor certificado más rápido del mundo.<br><br>Mecánicamente idéntico al 900, el 930 tiene el mismo motor Pratt & Whitney PT6A-66D, dispositivos de punta alar de diseño propio, toma de aire rediseñada y una hélice Hartzell de cinco aspas. Cada componente está dirigido a mejorar la potencia, la velocidad, la aerodinámica y el pilotaje.<br><br>Lo que incorpora el 930 es una cubierta de vuelo de cristal totalmente integrada en forma de aviónica digital Garmin G3000, una serie de funciones de seguridad mejoradas e interiores refinados y selectos que hacen que el TBM 930 sea más que una aeronave... es una lujosa máquina voladora.",
       "AIRCRAFT.UI_MANUFACTURER": "Daher",
@@ -58,8 +58,8 @@
       "COCKPIT.TOOLTIPS.PANEL_AC_SWITCH_PLTPAX": "Encender A\/A (control para pilotos y pasajeros)",
       "COCKPIT.TOOLTIPS.PANEL_AC_TEMP_KNOB_DECREASE": "Reducir temperatura seleccionada",
       "COCKPIT.TOOLTIPS.PANEL_AC_TEMP_KNOB_INCREASE": "Aumentar temperatura seleccionada",
-      "COCKPIT.TOOLTIPS.PANEL_DEICE_ICE_LIGHT_OFF": "Encender indicador de engelamiento",
-      "COCKPIT.TOOLTIPS.PANEL_DEICE_ICE_LIGHT_ON": "Apagar indicador de engelamiento",
+      "COCKPIT.TOOLTIPS.PANEL_DEICE_ICE_LIGHT_OFF": "Encender indicador de congelamiento",
+      "COCKPIT.TOOLTIPS.PANEL_DEICE_ICE_LIGHT_ON": "Apagar indicador de congelamiento",
       "COCKPIT.TOOLTIPS.PANEL_DEICE_INERT_SEP_OFF": "Activar separador inercial",
       "COCKPIT.TOOLTIPS.PANEL_DEICE_INERT_SEP_ON": "Desactivar separador inercial",
       "COCKPIT.TOOLTIPS.PANEL_DEICE_LTS_TEST": "Probar luces interiores",
@@ -83,14 +83,14 @@
       "COCKPIT.TOOLTIPS.SOURCE_SWITCH_TURN_GPU": "Seleccionar GPU",
       "COCKPIT.TOOLTIPS.SOURCE_SWITCH_TURN_OFF": "No seleccionar fuente eléctrica",
       "COCKPIT.TOOLTIPS.STARTER_ABORT": "Abortar arranque del motor",
-      "COCKPIT.TOOLTIPS.STARTER_TURN_OFF": "Apagar el motor",
-      "COCKPIT.TOOLTIPS.STARTER_TURN_ON": "Arrancar el motor",
+      "COCKPIT.TOOLTIPS.STARTER_TURN_OFF": "Apagar el encendido del motor",
+      "COCKPIT.TOOLTIPS.STARTER_TURN_ON": "Encender el encendido del motor",
       "COCKPIT.TOOLTIPS.TBM_LANDING_LIGHT_ON": "Encender luces de aterrizaje",
       "COCKPIT.TOOLTIPS.TBM_TAXI_LIGHT_OFF": "Apagar luces",
       "COCKPIT.TOOLTIPS.TBM_TAXI_LIGHT_ON": "Encender luces de rodaje",
-      "COCKPIT.TOOLTIPS.THROTTLE_CUTOFF": "Mando de gases (desconectar)",
-      "COCKPIT.TOOLTIPS.THROTTLE_HIGH_IDLE": "Mando de gases (ralentí alto)",
-      "COCKPIT.TOOLTIPS.THROTTLE_LOW_IDLE": "Mando de gases (ralentí bajo)",
+      "COCKPIT.TOOLTIPS.THROTTLE_CUTOFF": "Control de aceleración (desconectar)",
+      "COCKPIT.TOOLTIPS.THROTTLE_HIGH_IDLE": "Control de aceleración (punto muerto alto)",
+      "COCKPIT.TOOLTIPS.THROTTLE_LOW_IDLE": "Control de aceleración (punto muerto bajo)",
       "COCKPIT.TOOLTIPS.THROTTLE_PANEL_OVERRIDE_LEVER": "Anular control de combustible"
     }
   }

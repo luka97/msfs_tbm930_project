@@ -13,6 +13,8 @@
       "COCKPIT.TOOLTIPS.APTRIM_TURN_ON": "Accendi AP e compensazioni",
       "COCKPIT.TOOLTIPS.CIRCUIT_BREAKER_LIGHT_SWITCH_OFF": "Accendi la spia dell'interruttore magnetotermico",
       "COCKPIT.TOOLTIPS.CIRCUIT_BREAKER_LIGHT_SWITCH_ON": "Spegni la spia dell'interruttore magnetotermico",
+      "COCKPIT.TOOLTIPS.COCKPIT_DOOR_HANDLE_ACTION.0": "Sposta a sinistra per aprire. Sposta a destra per bloccare.",
+      "COCKPIT.TOOLTIPS.COCKPIT_DOOR_HANDLE_ACTION.1": "Sposta a destra per chiudere il portello.",
       "COCKPIT.TOOLTIPS.CRASHBAR_MOVE_DOWN": "Abbassa la crash bar",
       "COCKPIT.TOOLTIPS.CRASHBAR_MOVE_UP": "Alza la crash bar",
       "COCKPIT.TOOLTIPS.DIMMING_TURN_OFF": "Disattiva lo smorzamento luci",

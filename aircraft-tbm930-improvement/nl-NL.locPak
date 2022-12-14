@@ -13,6 +13,8 @@
       "COCKPIT.TOOLTIPS.APTRIM_TURN_ON": "AP en trims inschakelen",
       "COCKPIT.TOOLTIPS.CIRCUIT_BREAKER_LIGHT_SWITCH_OFF": "Lampje van stroomonderbreker inschakelen",
       "COCKPIT.TOOLTIPS.CIRCUIT_BREAKER_LIGHT_SWITCH_ON": "Lampje van stroomonderbreker uitschakelen",
+      "COCKPIT.TOOLTIPS.COCKPIT_DOOR_HANDLE_ACTION.0": "Beweeg naar links om te openen. Beweeg naar rechts om te vergrendelen.",
+      "COCKPIT.TOOLTIPS.COCKPIT_DOOR_HANDLE_ACTION.1": "Beweeg naar rechts om de deur te sluiten.",
       "COCKPIT.TOOLTIPS.CRASHBAR_MOVE_DOWN": "Crashbeugel omlaag",
       "COCKPIT.TOOLTIPS.CRASHBAR_MOVE_UP": "Crashbeugel omhoog",
       "COCKPIT.TOOLTIPS.DIMMING_TURN_OFF": "Dimmen uitschakelen",

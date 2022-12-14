@@ -13,6 +13,8 @@
       "COCKPIT.TOOLTIPS.APTRIM_TURN_ON": "AP und Trimmung einschalten",
       "COCKPIT.TOOLTIPS.CIRCUIT_BREAKER_LIGHT_SWITCH_OFF": "Leitungsschutzschalterbeleuchtung einschalten",
       "COCKPIT.TOOLTIPS.CIRCUIT_BREAKER_LIGHT_SWITCH_ON": "Leitungsschutzschalterbeleuchtung ausschalten",
+      "COCKPIT.TOOLTIPS.COCKPIT_DOOR_HANDLE_ACTION.0": "Nach links zum öffenen. Nach rechts zum sperren.",
+      "COCKPIT.TOOLTIPS.COCKPIT_DOOR_HANDLE_ACTION.1": "Nach rechts, um die Tür zu schließen.",
       "COCKPIT.TOOLTIPS.CRASHBAR_MOVE_DOWN": "Absturzbügel nach unten",
       "COCKPIT.TOOLTIPS.CRASHBAR_MOVE_UP": "Absturzbügel nach oben",
       "COCKPIT.TOOLTIPS.DIMMING_TURN_OFF": "Dimmen deaktivieren",
