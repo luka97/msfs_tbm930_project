@@ -10,7 +10,7 @@
 # Broken
 - Cargo door lever not working, door still closes/opens when opening/closing pilot door - see panel.xml, possibly remove every reference to the door (also check old_panel.xml, for the mugz mods)
 - GTCs not working
-- Overhead light switches and panel lighting not working
+- Overhead light switches and panel lighting not working - see TBM930_interior.xml
 
 # TODO
 - Recalculate the sizes in layout.json
