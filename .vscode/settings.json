@@ -4,7 +4,7 @@
             {
                 "match": ".*",
                 "isAsync": true,
-                "cmd": "powershell ./Create-Layout.ps1"
+                "cmd": "pwsh ./Create-Layout.ps1"
             }
         ]
     }

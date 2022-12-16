@@ -8,10 +8,6 @@
 
 
 # Broken
-- Cargo door lever not working, door still closes/opens when opening/closing pilot door - see panel.xml, possibly remove every reference to the door (also check old_panel.xml, for the mugz mods)
+- Cargo door lever not working, door still closes/opens when opening/closing pilot door - see panel.xml, won't fix for now, as Asobo may fix it before the stable releease of AAU1
 - GTCs not working
 - Overhead light switches and panel lighting not working - see TBM930_interior.xml
-
-# TODO
-- Recalculate the sizes in layout.json
-- Are the language files needed? Or can we remove them and use the official ones?
